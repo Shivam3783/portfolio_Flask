@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Portfolio</title>
+  <link href="static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <main class='main'>
+    <nav class='navBar'>
+      <h1 onclick="index.html">Shivam Patel Portfolio </h1>
+      <div class='navigationMenu'>
+        <a href="#aboutMe">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contactForm">Let's Connect!</a>
+        <div>
+    </nav>
+    <section class='heroSection'>
+      <!-- <img class='profileImage' src='photo_2023-01-05 11.26.18.jpeg'/> -->
+      <img class='profileImage' src='static/memoji.png' />
+
+      <div class='herosectionDetails'>
+        <h1>Shivam Patel</h1>
+        <h3>Student of Ganpat University</h3>
+      </div>
+    </section>
+    <section class='aboutMe' id='aboutMe'>
+      <h1>What I Do...</h1>
+      <p>Computers and their immense diversity have interested me thoroughly. In particular: artificial intelligence,
+        web languages and building computers. These have stretched my knowledge of computers and I always strive to
+        expand my knowledge of these topics further...
+      </p>
+    </section>
+    <section class='skillsAndProjects'>
+      <div class='skills' id='skills'>
+        <h1 class='cardHeading'>Skills</h1>
+        <img title='c++' src={{url_for('static', filename='c++.png' )}}>
+        <img title='c' src={{url_for('static', filename='c.png' )}}>
+        <img title='html' src={{url_for('static', filename='html.png' )}}>
+        <img title='css' src={{url_for('static', filename='css.png' )}}>
+        <img title='js' src={{url_for('static', filename='js.png' )}}>
+        <img title='java' src={{url_for('static', filename='java.png' )}}>
+        <img title='json' src={{url_for('static', filename='json.png' )}}>
+        <img title='python' src={{url_for('static', filename='python.png' )}}>
+      </div>
+      <div class='projects' id='projects'>
+        <h1 class='cardHeading'>Projects</h1>
+        <div class='projectContainer'>
+          <img title='java' src={{url_for('static', filename='java.png' )}}>
+          <div class='projectDescription'>
+            <h4>Employee Seating Assessment</h4>
+            <a
+              href="https://github.com/Shivam3783/Employee-Seating-Assessment-Project-Sem3">https://github.com/Shivam3783/Employee-Seating-Assessment-Project-Sem3</a>
+          </div>
+        </div>
+        <div class='projectContainer'>
+          <img title='c++' src={{url_for('static', filename='c++.png' )}}>
+          <div class='projectDescription'>
+            <h4>Super Market Billing System</h4>
+            <a href="https://github.com/Shivam3783/ESFP-PROJECT-2">https://github.com/Shivam3783/ESFP-PROJECT-2</a>
+          </div>
+        </div>
+        <div class='projectContainer'>
+          <img title='html' src={{url_for('static', filename='html.png' )}}>
+          <div class='projectDescription'>
+            <h4>Photo Gallery</h4>
+            <a
+              href="https://ipproject1shivampatel.000webhostapp.com/">https://ipproject1shivampatel.000webhostapp.com/</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <form name="contactForm" id="contactForm" action="/contact" method="post">
+      <section class='contactForm' id='contactForm'>
+        <h1>Let's Connect!</h2>
+          <div class='formGroup'>
+            <label for='name'>Enter Full Name</label><br />
+            <input type='text' id='name' name="name" placeholder='Full Name' />
+          </div>
+          <div class='formGroup'>
+            <label for='email'>Email</label><br />
+            <input type='text' id='email' name="email" placeholder='Email' />
+
+          </div>
+          <div class='formGroup'>
+            <label for='message'>Message</label><br />
+            <textarea placeholder="Send some message!" id="message" name="message" rows="4" cols="50"></textarea>
+          </div>
+          <button class='submitButton' onClick="submitForm()">Connect</button>
+          <script>
+            function submitForm() {
+              var email = document.getElementById('email').value;
+              var emailRGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+              var emailResult = emailRGEX.test(email);
+              if (emailResult == true) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                fetch('/contact', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ name, email, message }),
+                })
+                  .then(response => {
+                    if (response.ok) {
+                      document.getElementById('messageStatus').textContent = 'Message sent successfully!';
+                    }
+                  })
+                  .catch(error => console.error('Error:', error));
+              }
+            }
+          </script>
+
+      </section>
+    </form> -->
+
+    <form name="contactForm" id="contactForm" action="/contact" method="post">
+      <section class="contactForm" id="contactForm">
+        <h1>Let's Connect!</h1>
+        <div class="formGroup">
+          <label for="name">Enter Full Name</label><br />
+          <input type="text" id="name" name="name" placeholder="Full Name" required />
+        </div>
+        <div class="formGroup">
+          <label for="email">Email</label><br />
+          <input type="email" id="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="formGroup">
+          <label for="message">Message</label><br />
+          <textarea placeholder="Send some message!" id="message" name="message" rows="4" cols="50" required></textarea>
+        </div>
+        <button class="submitButton" onClick="submitForm()">Connect</button>
+        <div id="messageStatus"> Message sent successfully!</div>
+        <!-- <script>
+          function submitForm() {
+            var email = document.getElementById('email').value;
+            var emailRGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var emailResult = emailRGEX.test(email);
+            if (emailResult == true) {
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const message = document.getElementById('message').value;
+    
+              fetch('/contact', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+              })
+                .then(response => {
+                  if (response.ok) {
+                    document.getElementById('messageStatus').textContent = 'Message sent successfully!';
+                  }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+              document.getElementById('messageStatus').textContent = 'Please enter a valid email address.';
+            }
+          }
+        </script> -->
+      </section>
+    </form>
+    
+
+    
+    <div class="social-icons">
+      <a class="ion-icon" href="https://www.instagram.com/">
+        <ion-icon name="logo-instagram"></ion-icon> </a>
+      <a class="ion-icon" href="https://twitter.com/">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </a>
+      <a class="ion-icon" href="https://facebook.com/">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </a>
+      <a class="ion-icon" href="https://facebook.com/">
+        <ion-icon name="logo-github"></ion-icon>
+      </a>
+    </div>
+  </main>
+
+</body>
+
+</html>
